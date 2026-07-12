@@ -35,6 +35,64 @@ const stats = [
   ["25", "Production lines"],
 ];
 
+const factorySlides = [
+  {
+    src: "/factory/factory-exterior.jpg",
+    label: "Factory exterior",
+    title: "Ningbo Yinshan Garments Factory",
+    alt: "Exterior view of Ningbo Yinshan Garments Factory",
+  },
+  {
+    src: "/factory/cutting-center.jpg",
+    label: "Cutting center",
+    title: "Pattern, fabric spreading, and cutting preparation",
+    alt: "Yinshan cutting center with fabric and cutting equipment",
+  },
+  {
+    src: "/factory/sewing-center.jpg",
+    label: "Sewing center",
+    title: "Organized sewing lines for bulk sportswear production",
+    alt: "Yinshan sewing center production equipment",
+  },
+  {
+    src: "/factory/production-line.jpg",
+    label: "Production line",
+    title: "Garments move through controlled workshop stations",
+    alt: "Yinshan garment production line with workers and hanging system",
+  },
+] as const;
+
+const processMedia = [
+  {
+    step: "Sample",
+    src: "/process/sample.jpg",
+    title: "Sample development",
+    text: "Digital product development and sample sewing help confirm fit, artwork, construction, and production feasibility before bulk order.",
+    alt: "Yinshan sample development team working on custom apparel designs",
+  },
+  {
+    step: "Testing",
+    src: "/process/testing.jpg",
+    title: "Fabric and garment testing",
+    text: "Testing supports fabric selection, wash performance, colour fastness, and practical quality checks before mass production.",
+    alt: "Yinshan testing room for fabric and garment quality checks",
+  },
+  {
+    step: "Printing",
+    src: "/process/printing.jpg",
+    title: "Artwork and printing",
+    text: "Print production turns approved artwork into panels and decoration layouts for sublimation, digital print, and custom graphics.",
+    alt: "Yinshan printing room producing custom apparel panels",
+  },
+  {
+    step: "Inspection",
+    src: "/process/inspection.png",
+    title: "Final inspection",
+    text: "Inspection areas check garment workmanship, measurements, decoration quality, packing details, and final order consistency.",
+    alt: "Yinshan inspection area checking finished garments",
+  },
+] as const;
+
 const contactEmail = "Evan.qiu@chinayinshan.com";
 const whatsappUrl = "https://wa.me/8613777004477";
 
@@ -126,9 +184,9 @@ export default function Home() {
         <div className="hero-grid shell">
           <div className="hero-copy">
             <p className="eyebrow">CUSTOM SPORTSWEAR MANUFACTURER SINCE 1986</p>
-            <h1>Custom T-Shirt factory for teams, events, and brands.</h1>
+            <h1>Custom Sports T Shirt Manufacturer for teams, events, and brands.</h1>
             <p className="hero-lead">
-              Yinshan is not a trading desk. We are a sportswear factory group with in-house design, fabric sourcing, artwork development, printing, embroidery, production, inspection, packaging, and global delivery.
+              Yinshan is not a trading desk. We are a sportswear factory group manufacturing custom sports T shirts, team sports T shirts, sports event T shirts, private label sports T shirts, and OEM sports T shirt programmes with in-house design, fabric sourcing, artwork development, printing, embroidery, production, inspection, packaging, and global delivery.
             </p>
             <div className="hero-actions">
               <a className="button button-coral" href="#quote">Start your T-shirt brief <span aria-hidden="true">↓</span></a>
@@ -162,12 +220,19 @@ export default function Home() {
           <a className="arrow-link" href="#custom">Build a custom specification <span aria-hidden="true">↘</span></a>
         </div>
         <div className="factory-carousel" aria-label="Factory and workshop carousel">
-          <img src="/factory-workshop-carousel.png" alt="Inside Yinshan custom sportswear factory and sewing workshop" />
+          {factorySlides.map((slide, index) => (
+            <img
+              key={slide.src}
+              src={slide.src}
+              alt={slide.alt}
+              style={{ animationDelay: `${index * 4}s` }}
+            />
+          ))}
           <div className="carousel-caption">
-            <span>Factory floor</span>
-            <strong>Workshop / QC / Production line</strong>
+            <span>Factory proof</span>
+            <strong>Exterior / Cutting / Sewing / Production line</strong>
           </div>
-          <div className="carousel-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div className="carousel-dots" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
         </div>
       </section>
 
@@ -259,6 +324,18 @@ export default function Home() {
             <article><span>03</span><h3>Produce & inspect</h3><p>Production is coordinated with in-line quality checks and final garment inspection.</p></article>
             <article><span>04</span><h3>Pack & deliver</h3><p>We prepare the right packing, carton sorting, and shipment plan for the destination.</p></article>
           </div>
+          <div className="process-media" aria-label="Custom production process photos">
+            {processMedia.map((item) => (
+              <article key={item.step}>
+                <img src={item.src} alt={item.alt} />
+                <div>
+                  <span>{item.step}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -304,9 +381,11 @@ export default function Home() {
       </section>
 
       <footer className="footer shell">
-        <a className="footer-brand" href="#top"><img src="/brand/yinshan-logo.png" alt="Yinshan Sportswear" /></a>
-        <div><strong>Ningbo Yinshan Garments Factory</strong><p>Ningbo Ever-Echo Trading Co., Ltd</p><p>Address: Ningbo, China</p></div>
-        <div><a href="https://www.customisedsportswear.com" target="_blank" rel="noreferrer">customisedsportswear.com</a><p><a href={`mailto:${contactEmail}`}>{contactEmail}</a></p><p><a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp: +86 137 7700 4477</a></p><p>© {new Date().getFullYear()} Ningbo Yinshan Garments Factory</p></div>
+        <div className="footer-identity">
+          <a className="footer-brand" href="#top"><img src="/brand/yinshan-logo.png" alt="Yinshan Sportswear" /></a>
+          <div className="footer-company"><strong>Ningbo Yinshan Garments Factory</strong><p>Ningbo Ever-Echo Trading Co., Ltd</p><p>Address: Ningbo, China</p></div>
+        </div>
+        <div className="footer-contact"><a href="https://www.customisedsportswear.com" target="_blank" rel="noreferrer">customisedsportswear.com</a><p><a href={`mailto:${contactEmail}`}>{contactEmail}</a></p><p><a href={whatsappUrl} target="_blank" rel="noreferrer">WhatsApp: +86 137 7700 4477</a></p><p>© {new Date().getFullYear()} Ningbo Yinshan Garments Factory</p></div>
       </footer>
     </main>
   );
